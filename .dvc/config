@@ -1,0 +1,7 @@
+[core]
+    remote = ssh-storage
+['remote "ssh-storage"']
+    url = ssh://andrey@192.168.56.5/opt/datasets
+    password = 926217
+    user = andrey
+    port = 22
