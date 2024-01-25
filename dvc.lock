@@ -64,11 +64,11 @@ stages:
       size: 950
     params:
       params.yaml:
-        split.split_ratio: 0.3
+        split.split_ratio: 0.2
     outs:
     - path: data/stage4
       hash: md5
-      md5: efc457f2e40cdc99efb52be8185e72ff.dir
+      md5: cd2165d113324bfe519bccf43fae4660.dir
       size: 9735
       nfiles: 2
   train:
@@ -76,32 +76,32 @@ stages:
     deps:
     - path: data/stage4/train.csv
       hash: md5
-      md5: 3c42beb99ebeb104f5287ecfb62c9fae
-      size: 6814
+      md5: 1ff10077ef89421c8e7e284bf5a16f82
+      size: 7788
     - path: scripts/model_scripts/dt.py
       hash: md5
       md5: 40f2af3a9172612368658e0355c59bf8
       size: 726
     params:
       params.yaml:
-        train.max_depth: 4
+        train.max_depth: 3
         train.seed: 42
     outs:
     - path: models/model.pkl
       hash: md5
-      md5: 0f95a41b06e2e012af5c782688124517
-      size: 3704
+      md5: 203da84bd7ca92c84392de1b5f1d9194
+      size: 2472
   evaluate:
     cmd: python3 scripts/model_scripts/evaluate.py data/stage4/test.csv models/model.pkl
     deps:
     - path: data/stage4/test.csv
       hash: md5
-      md5: fa932a1c16123f285a38b871e7187e34
-      size: 2921
+      md5: 35604eba6d7dbb7b4ae6fc456fb09b0b
+      size: 1947
     - path: models/model.pkl
       hash: md5
-      md5: 0f95a41b06e2e012af5c782688124517
-      size: 3704
+      md5: 203da84bd7ca92c84392de1b5f1d9194
+      size: 2472
     - path: scripts/model_scripts/evaluate.py
       hash: md5
       md5: 1920a6fd118f71d73fbe8d99539fef96
@@ -109,5 +109,5 @@ stages:
     outs:
     - path: evaluate/score.json
       hash: md5
-      md5: a4ca449960db7dd0ab61baa1a07d9c80
+      md5: defefa79ba790b0468d912ecd6fc0fbb
       size: 29
